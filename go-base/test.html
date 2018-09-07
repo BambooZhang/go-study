@@ -1,0 +1,11 @@
+<h1>person list</h1>
+<table border="1">
+{{range $i, $v := .Lists}}
+    <tr>
+        <td>{{$i}}</td>
+        <td>{{$v.Name}}</td>
+        <td>{{$v.Age}}</td>
+        <td>{{$v.Country|Func|print}}</td>
+    </tr>
+{{end}}
+</table>
