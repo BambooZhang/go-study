@@ -5,3 +5,4 @@ go-3:mysql的使用
 go-4:mysql的使用
 go-5：io使用
 go-6：模板template使用
+go-7：package和可见性
