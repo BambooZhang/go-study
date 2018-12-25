@@ -6,7 +6,6 @@ import (
 	"os"
 	//"net/http"
 	"strings"
-	"net/http"
 )
 
 /***
@@ -55,13 +54,15 @@ func filePase()  {
 	}
 
 
-	//tmpl.Execute(os.Stdout, struct{ Lists []Person }{list})
-
+	tmpl.Execute(os.Stdout, struct{ Lists []Person }{list})
+	/*fmt.Println("http server have stared :  http://localhost:8081")
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		tmpl.Execute(w, struct{ Lists []Person }{list})
 	})
+	http.ListenAndServe(":8081", nil)*/
 
-	http.ListenAndServe(":8081", nil)
+
+
 }
 
 
