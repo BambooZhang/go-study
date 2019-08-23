@@ -47,6 +47,7 @@ type Server struct {
 	ServerName string//默认会和字段名称相同
 	ServerIP   string `json:"serverIp"` // 注意这里的IP和Ip的大小写我做了不同的隐射处理
 	Inet    string `json:"inet,omitempty"`//omitempty:如果ServerIP为空，则不输出到JSON中
+	Meme    string `json:"-"`//“ - ”，则该字段总是被省略不会转成JSON字段和值
 }
 
 type Serverslice struct {
@@ -55,8 +56,8 @@ type Serverslice struct {
 
 func main() {
 	var s Serverslice
-	str := `{"servers":[{"serverName":"Shanghai_VPN","serverIP":"127.0.0.1"},
-            {"serverName":"Beijing_VPN","serverIP":"127.0.0.2"}]}`
+	str := `{"servers":[{"serverName":"Shanghai_VPN","serverIP":"127.0.0.1","Meme":"Babmoo_002SD"},
+            {"serverName":"Beijing_VPN","serverIP":"127.0.0.2","Meme":"Babmoo_002SD"}]}`
 
 	json.Unmarshal([]byte(str), &s) // json字符串解析成对象
 	fmt.Println(s)
@@ -78,9 +79,12 @@ func main() {
 	m := f.(map[string]interface{})
 
 	for k, v := range m {
+
+		fmt.Print(fmt.Println(m[k]))
 		switch vv := v.(type) {
 		case string:
 			fmt.Println(k, "is string", vv)
+
 		case int:
 			fmt.Println(k, "is int", vv)
 		case []interface{}:
@@ -93,12 +97,19 @@ func main() {
 		}
 	}
 
+	fmt.Println("-------------------MAP成JSON-----------")
+	json1, err := json.Marshal(m)
+	if err != nil {
+		fmt.Println("json err: ", err)
+	}
+
+	fmt.Println(string(json1))
 
 	fmt.Println("-------------------生成JSON-----------")
 	//生成JSON 若我们要输出JSON数据串，可通过Marshal函数来处理
 	var serList Serverslice
-	serList.Servers = append(serList.Servers, Server{ServerName: "Shanghai_VPN", ServerIP: "117.0.0.1",Inet:"192.168.0.1"})
-	serList.Servers = append(serList.Servers, Server{ServerName: "Beijing_VPN", ServerIP: "127.0.0.2"})
+	serList.Servers = append(serList.Servers, Server{ServerName: "Shanghai_VPN", ServerIP: "117.0.0.1",Inet:"192.168.0.1",Meme:"Babmoo_002SD"})
+	serList.Servers = append(serList.Servers, Server{ServerName: "Beijing_VPN", ServerIP: "127.0.0.2",Meme:"Babmoo_002SA"})
 
 	json, err := json.Marshal(serList)
 	if err != nil {

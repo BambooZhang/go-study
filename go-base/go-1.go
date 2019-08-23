@@ -3,8 +3,20 @@ package main
 import (
 	"fmt"
 	//"reflect"
+	"math"
 )
 
+
+/***
+
+引用类型
+引用类型和原始的基本类型恰恰相反，它的修改可以影响到任何引用到它的变量。在Go语言中，引用类型有切片、map、接口、函数类型以及chan。
+
+引用类型之所以可以引用，是因为我们创建引用类型的变量，其实是一个标头值，标头值里包含一个指针，指向底层的数据结构，
+当我们在函数中传递引用类型时，其实传递的是这个标头值的副本，它所指向的底层结构并没有被复制传递，这也是引用类型传递高效的原因
+
+
+ */
 
 func main() {
 	/* 这是我的第一个简单的程序 */
@@ -108,6 +120,8 @@ func main() {
 	food := append(veggies, fruits...)
 	fmt.Println("food:",food)
 
+	cars1 := []string{}
+	cars1 = append(cars1, "Toyota")
 
 
 	fmt.Println("MAP--------------------------------------------")
@@ -264,6 +278,54 @@ func main() {
 	p2 :=Pen{"penc2", 0, 2.12, 32,0.2}
 	orderArry := []Order{Book1, p1, p2}
 	totalExpense(orderArry)//总价格
+
+	//注意非指针方法和指针方法的区别
+	fmt.Println("针方法和指针方法的区别--------------------------------------------")
+	fmt.Println("Go语言里有两种类型的接收者：值接收者和指针接收者,使用值类型接收者定义的方法，在调用的时候，使用的其实是值接收者的一个副本，所以对该值的任何操作，不会影响原来的类型变量")
+	p1.modify1()
+	fmt.Println(p1.category) //没有修改成功
+	p1.modify2()
+	fmt.Println(p1.category) //修改为：李四
+	(&p1).modify2()
+	fmt.Println(p1.category) //修改为：李四
+
+
+	fmt.Println("函数作为参数--------------------------------------------")
+	/* 声明函数变量 */
+	getSquareRoot := func(x float64) float64 {
+		return math.Sqrt(x)
+	}
+
+	fmt.Println(getSquareRoot(9)) //使用函数
+
+	//函数作为参数实例2
+	// 传递带一个参数函数作为参数
+	funcInvokeOne(funcOne,"bamboo")
+	funcInvokeMany(funcMany,"bamboo",1,3)
+
+
+	fmt.Println("闭包--------------------------------------------")
+	/* nextNumber 为一个函数，函数 i 为 0 */
+	nextNumber := getSequence()
+
+	/* 调用 nextNumber 函数，i 变量自增 1 并返回 */
+	fmt.Println(nextNumber())
+	fmt.Println(nextNumber())
+
+	fmt.Println("可变参数--------------------------------------------")
+	print("1","2","3")
+
+
+	fmt.Println("接口作为参数,调用时才确定是哪个类型的方法--------------------------------------------")
+	//需要一个animal接口作为参数
+	invoke(Book1)
+	invoke(p1)
+
+
+	fmt.Println("多个返回值--------------------------------------------")
+	str,v :=getMore()
+	fmt.Println(str,v)
+
 }
 
 /**
@@ -273,6 +335,8 @@ func functionname(parametername type) returntype {
     // 函数体（具体实现的功能）
 }
 _ 在 Go 中被用作空白符，可以用作表示任何类型的任何值。
+
+在go中一般是值传递，除非你显示的使用指针
 
 
  */
@@ -315,7 +379,7 @@ type Books struct {
 
 //实现接口方法
 func (books Books) print() {
-	 fmt.Printf("title:%s,author:%s",books.title,books.title)
+	 fmt.Printf("title:%s,author:%s\n",books.title,books.title)
 }
 
 //书的价格统计
@@ -333,7 +397,7 @@ type Pen struct {
 }
 
 func (pen Pen) print() {
-	fmt.Printf("category:%s,price:%f",pen.category,pen.price)
+	fmt.Printf("category:%s,price:%f\n",pen.category,pen.price)
 }
 //笔的价格统计
 func (pen Pen) totalPrice() float32{
@@ -341,11 +405,71 @@ func (pen Pen) totalPrice() float32{
 }
 
 
+func (pen Pen) modify1() {
+	pen.category = "李四"
+}
+
+func (pen *Pen) modify2(){
+	pen.category = "李四"
+}
+
 //统计所有订单的总额
 func totalExpense(s []Order) {
 	expense := float32(0)
 	for _, v := range s {
 		expense = expense + v.totalPrice()
 	}
-	fmt.Printf("Total Expense Per Month $%f", expense)
+	fmt.Println("Total Expense Per Month $%f", expense)
+}
+
+
+//匿名函数，可作为闭包：匿名函数的优越性在于可以直接使用函数内的变量，不必申明，外部无法使用其内部变量
+func getSequence() func() int {
+	i:=0
+	return func() int {
+		i+=1
+		return i
+	}
+}
+
+// 可变参数
+func print (a ...interface{}){
+	for _,v:=range a{
+		fmt.Print(v)
+	}
+	fmt.Println()
+}
+
+
+
+// 接口作为参数 有泛型的感觉，只有调用的时候才知道具体是哪个类型
+func invoke(a Order){
+	a.print()
+}
+
+// 一个
+func funcOne(s  interface{}) {
+	fmt.Println("调用函数的字符串是:%s",s)
+}
+// 带一个参数的函数
+func funcInvokeOne(handle interface{}, args interface{}) {
+	handle.(func(interface{}))(args)
+}
+
+// 多个参数
+func funcMany(args... interface{}) {
+	fmt.Println("多个参数", args)
+}
+// 带多个参数的函数
+func funcInvokeMany(handle  interface{}, args... interface{}) {
+	handle.(func(...interface{}))(args)
+}
+
+
+// 多个返回值
+
+func getMore() (string , interface{}){
+
+	p1 :=Pen{"penc1", 0, 2.12, 32,0.2}
+	return "str",p1
 }
