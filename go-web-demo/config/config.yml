@@ -1,0 +1,138 @@
+#app配置
+app:
+  port: :21103
+  env: test
+
+#log配置
+log:
+  path: /Users/lifh/workspace/go/src/coin/logs
+  file_name: coin.merchant.log
+  max_day: -1
+
+wallet_key_rsa:
+  pri_key: MIICXAIBAAKBgQCsxckW7K1OjxaKeWOQ19u5ofMP1ZOiWJB3HoYZhZce5QoT1AgMgZiU5MISBPv6r6XxIEAVyerEqeVOz3SxKRc5bLly9yMkWRA4KkQl7OfOVnn0HeupHYkrsrqM6mjNbwvMmBncMUf0MchGwxgfLZ/1DNYqOdItvRRUhDjvp5C0vQIDAQABAoGALT+vpr1dtlFrSeD43ppqBXgQvHjnLYGcdFYeMNj39zNtLDw/z2axm20+FpIPnFwcTcZwgkRbpB4K3FUg7rUgS49/YVipZtGQJVOWY21ai0w35u+fw/OCDgXgc1dCdFqX4rcczA4qWvw6rHSp8wejHZzVVUM96ko+KVa+kWybo1ECQQDfKDZRBnFVc5duFgHNCd7Uf+gqriR6at7f/YPnP1i1ZpYAnU8cUEg4GuElOwX8KiWCbKPTwiiDBo5yta4kIJqHAkEAxjNCnT3RdL3+hjFCE9iOdbLinO6YN2cP6V9KpHSDgVKvLdYc4Jwi9TzeUXabhq6WkP2RubfCw3GH8vfjYfPzmwJASxoVbZ9ldQS56equIHs56vpBAFwrGqfs6iU/xwuipyonQX2vqi+6nmctboI2uW7VwNcfK50kVTRXrHNIcBAo8QJAZOUfWhBoGffGI+Xbb2LkUoI33g+PqVRrwy9hPgqaDzFaQAkpNiYFnbXYrrukPJGP0Etk7ZfgK8IVpNgQBoM7VQJBAMa03j9w+1ncnBTteV1KZGZiis5fCvSz9bmTiKihRJJvvkNrCXEJlWlKDBUhEwsAydt4h+euIQK0+HrukrIoVp8=
+  pub_key: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCsxckW7K1OjxaKeWOQ19u5ofMP1ZOiWJB3HoYZhZce5QoT1AgMgZiU5MISBPv6r6XxIEAVyerEqeVOz3SxKRc5bLly9yMkWRA4KkQl7OfOVnn0HeupHYkrsrqM6mjNbwvMmBncMUf0MchGwxgfLZ/1DNYqOdItvRRUhDjvp5C0vQIDAQAB
+
+import_src_addrs:
+  coins:
+  - coin: ZBT
+    addr: 1H6gUg7MgkZC5BNrTve5yr8yoTbKhtX1BH
+  - coin: WLT
+    addr: 1NPAXRWtXSYwnrG2LXNAo1BCUGgaGAjLba
+  - coin: YXT
+    addr: YRhdCT4ZpCT4TpM3NG6B1uuRWmpbvcp5Kt
+
+#serverUrls
+servers:
+  account_url: http://120.78.205.38:21005/
+  user_url: http://120.78.205.38:21003/
+  yyt_agent_url: http://120.79.31.191:20052/
+  notice_url: http://120.78.205.38:20061/
+
+servers_key:
+  yyt_agent_key: MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBALmAEltxu20cBNeMI7kfSWxzi0rIiVFG6IRnBLDGGdUve3joMkAO+soZhTrQrFMWTAjDqyZCAUHCImpXrqE2lIdCCItgrHwSY0vJwOikKnd6lb3h6XaNdkWienrKtP5AYzx127Y7rg8+uqvMBgE1yLKT0CnWEeuzNiC5InnJ5wDdAgMBAAECgYA2q6M9ZiiaAJ8As+G3ZpwqJWeRE8c8uAxBMWd1ff0REpxuRujAbmnFdH4KloOjPTgNgTWI4f0i10dzVgI2qzJcpi4x2tLKifTr49ul9HkUByFnb0V6im6BUap+0kIpdRUMgCL2iS6Wdfwd5liotQj2wAu9rgUqqCUVQeoQVao79QJBAOM/V1f5rZEkq5GS+zi556YmcOpAs4hSWWJQfL/9/aEu8ui4fEZS4m62OLQD/0l1j1T4YsEAC1RfiYUvA74ZqQMCQQDQ+IT2XBTOoNpXR38r91JDMTmUyTJau9RkKgn13dqAE8fpeMIq1Y2w+3OhjMaQEYHJJ5Hv6GVX21tSVotZSlifAkB4Pq4C+TSkVpkKQJH6JDS1MCYTbgURnzF42koIdWddgLA8AFKSC42RM46xgmP1BOXA+mWW5mUYUi08cfIzBvTtAkEAyCD51aaiFrFd6bCDTmvx0H/YEXIOU28HHVZVa64oj/hhwGryKWuT4yctuk3D7D2X+jl3PjdmtxlRAC36Dm1xKQJALZXj65+rYcTfgqqKnjWuaA4/erY4VX7mZ+UhgBNWOVfmMK4Fu9HvWiGIaBl8sP3nuZBzaP7UJau7wTMDdmKw+Q==
+
+block_nodes:
+  btc_nodes:
+  - coin: YXT
+    host: 192.168.1.143:29995
+    user: yxt
+    pwd: yxt
+  - coin: WLT
+    host: 47.106.241.181:29991
+    user: wlt
+    pwd: wlt
+  - coin: ZBT
+    host: 47.106.241.181:29992
+    user: zbt
+    pwd: zbt
+
+
+#rpcx
+rpcx:
+  #  address: yw-os-0001  #提供服务的ip，可以不填写，代表对所有地址开放
+  address: 127.0.0.1  #提供服务的ip，可以不填写，代表对所有地址开放
+  path: /rpcx/zwy_rpc
+
+zk:
+  hosts:
+  - host: yw-os-0002:2181
+  connectionTimeout: 3000
+  sessionTimeout: 3000
+  namespace: zwy/config/coin.merchant
+
+
+database:
+  host: 120.79.31.191
+  #  host: 120.78.205.38
+  port: 6033
+  name: zwy_merchant
+  user: zs
+  password: zs
+  charset: utf8
+#  maxLifttime: 10 # second
+
+#kafka
+kafka:
+  addresses:
+  - addr: yw-os-0001:9092
+  #productor
+  acks: -1
+  #consumer
+  offsets:
+    initial: -1 #新的消费者只消费新的消息
+
+#redis
+redis:
+  hosts: yw-os-0002:34155
+  pass: 87LD_kd1
+  maxIdle: 1
+  maxActive: 100
+  idleTimeout: 180
+  db: 31
+
+
+
+#iris配置
+DisablePathCorrection: false
+EnablePathEscape: false
+FireMethodNotAllowed: true
+DisableBodyConsumptionOnUnmarshal: true
+#TimeFormat: Mon, 01 Jan 2006 15:04:05 GMT
+TimeFormat: 2006-01-02 15:04:05
+Charset: UTF-8
+
+
+sign:
+   pri_key: "MIIEogIBAAKCAQEA58A/jfDrLNdV4Vcbd4NLcuBMSSb/hLjk/6OxX0xndogtawT1
+             NnmuwzcNdUJAooWjyVxc3cKsrLM2DLrOBt/uBfLKp7rxJvrS1baL7WuR1O0ekjRu
+             FYnMKBFkIXDaYhE7hC+MLUcID+4R5040igy9GALkzF6JGPPVKVO8kp/TfXs4zDvR
+             lmbJTRK/FgKe8OvIZkIzZISmBwRqjKnB2pRmskGLTVbnzxD8cW0/hVOn8Q+whlL0
+             dSQHfMX6c2CsvTQUYN1mkeeGOiLu0QwYSZy22DViXkQO0cgiCavl+r1ma5uNG44l
+             ARPuWh81iFGBQtaHKVeE6QLVTOwkF8EaiXE8ZwIDAQABAoIBADzr4MkjZ+8lvEG8
+             cE/+h7rvE563TbxKDojVMy9mGlyid64GY5+qZTKUKkmE3RDcKK4qRY9WOaY8hhza
+             joZoH14Y8QUes34XuYzMrAQBnxhmLP8qITYwPybZS4Uu8XmOJiMdjK/qWEg3wSUY
+             /d68coj5WcQPpeKVVpfCl3PD6Ai396jZOc7mtNlQIWmB66r99aZwBMfjUxlFHkeh
+             ekM8bUfQAc14qgfuGmG2/2n4dm+kiEqFTqR1lNcbDrf+s122nfOv4Izrokz98k6U
+             P+aU+JUJ9hwk2Bq4+nkXG6odP2cd9n8jtFCmeFJqABcea253R3fWDRPAIdZfjWuS
+             j3sN0UECgYEA9kKgo1N4YaX9m8wB430hy2WdL6frN4nUdw02aoQTLyYIFKUivdIQ
+             Mtx0SRW8hnL5ySoLUdGKBdc86/xUegSdX0iwbrlMdPrNMzyocHgIKXmfmsHOFWnm
+             jtyg3uzCNgOFBUV4lqRJGaQbgO4inhNz19pNM+WjE+7s6QXnxnKN2YkCgYEA8Oq3
+             BIi0N/umAeuBk519ipQGvhOdfQric1aPi8+ovFQ28W8qe6W+9H+7i9lVJgIc6x5/
+             9yJCypjB+JsbAfnDSnzWL1l3AABEclgUvoqZJDGNeJYtCjuz2WassCNOUgsMC6dV
+             SCkonBzeCz8WLsb4y/iYPbp8JKarTqNLWEkYGm8CgYAwFfCCE+F0x9HOozZXMm7v
+             5Yac8KAIdzxqhsTyZZnNYhK/3UL8Z9FL7Sozvy/R3Q+TTUdqkYzu+QlnVx0zukT0
+             fyAcbshUK0j4UUbet0F4v8v/jwprugMQMFqlTPvbSjKmRdt3JtszS40nTtipn0jG
+             hFUA5j1Cviu6kLGiWWoDaQKBgCYUg59E2G+s6D2PcyjZEPnxketDgHY+XTLr8L6h
+             sUMrcI/TCX0H4toUwplFXg8m8Fk9te5jTPlnEenw4mD6kKLafqR3WLb4U9lbENRZ
+             ZgFxj7IK0s22SCRJ9WvV+NBBDMNezL0ePFwIuBRBAYmdS8A56B6BtpO4gIVqjENF
+             MnkjAoGAdoX3XOhU6aP9kxvxf7ggW8klrrAuqOZJdiSJjvxvlvoiAJbniH8Elz+n
+             ijPM5hgPBNYNEfDi5bc+Zx0rVq9viq01/KrtdNLkKsGuMCz1S25NKNhL2uDNkU2v
+             VuttnnhDIov9DrgfKkwjdujea0tmjsh+Df6i4dVSOyodEBhQK4c="
+   pub_key: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA58A/jfDrLNdV4Vcbd4NL
+             cuBMSSb/hLjk/6OxX0xndogtawT1NnmuwzcNdUJAooWjyVxc3cKsrLM2DLrOBt/u
+             BfLKp7rxJvrS1baL7WuR1O0ekjRuFYnMKBFkIXDaYhE7hC+MLUcID+4R5040igy9
+             GALkzF6JGPPVKVO8kp/TfXs4zDvRlmbJTRK/FgKe8OvIZkIzZISmBwRqjKnB2pRm
+             skGLTVbnzxD8cW0/hVOn8Q+whlL0dSQHfMX6c2CsvTQUYN1mkeeGOiLu0QwYSZy2
+             2DViXkQO0cgiCavl+r1ma5uNG44lARPuWh81iFGBQtaHKVeE6QLVTOwkF8EaiXE8
+             ZwIDAQAB"
