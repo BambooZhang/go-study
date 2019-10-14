@@ -1,9 +1,9 @@
-# go-study
+﻿# go-study
 
 
 ## go-base：基础学习
 
-- o-1：基础类型
+- go-1：基础类型
 - go-2:信道:channel
 - go-3:mysql的使用
 - go-4:mysql的使用
@@ -135,3 +135,9 @@ x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0
 9、进入日志目录cd apps/logs  观察是否启动异常    
 
 
+
+## 我的微信订阅号
+
+
+
+![bamboo.jpg](https://raw.githubusercontent.com/BambooZhang/spring-cloud/master/bamboo.jpg)
